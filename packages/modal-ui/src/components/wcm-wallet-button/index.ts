@@ -1,4 +1,4 @@
-import { EventsCtrl } from '@walletconnect/modal-core'
+import { EventsCtrl } from '@puzzlehq/walletconnect-modal-core'
 import { html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'

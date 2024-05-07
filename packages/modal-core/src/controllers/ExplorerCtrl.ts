@@ -35,12 +35,14 @@ export const ExplorerCtrl = {
       const params = { recommendedIds }
       const { listings } = await ExplorerUtil.getAllListings(params)
       const listingsArr = Object.values(listings)
-      listingsArr.sort((a, b) => {
-        const aIndex = explorerRecommendedWalletIds.indexOf(a.id)
-        const bIndex = explorerRecommendedWalletIds.indexOf(b.id)
+      if (listings && listingsArr.sort) {
+        listingsArr.sort((a, b) => {
+          const aIndex = explorerRecommendedWalletIds.indexOf(a.id)
+          const bIndex = explorerRecommendedWalletIds.indexOf(b.id)
 
-        return aIndex - bIndex
-      })
+          return aIndex - bIndex
+        })
+      }
       state.recomendedWallets = listingsArr
     }
 

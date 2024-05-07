@@ -1,4 +1,4 @@
-import { CoreUtil, OptionsCtrl } from '@walletconnect/modal-core'
+import { CoreUtil, OptionsCtrl } from '@puzzlehq/walletconnect-modal-core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
@@ -28,7 +28,30 @@ export class WcmDesktopConnectingView extends LitElement {
 
     if (nativeUrl) {
       const href = CoreUtil.formatNativeUrl(nativeUrl, uri, name)
-      CoreUtil.openHref(href, '_self')
+
+      if (
+        name === 'Puzzle Wallet' &&
+        // @ts-expect-error window.aleo may be undefined
+        window?.aleo?.connectPuzzle &&
+        // @ts-expect-error window.aleo may be undefined
+        window?.aleo?.puzzleWalletClient
+      ) {
+        const url = new URL(href)
+        const params = url.searchParams
+        const wcUri = params.get('uri')
+        const requestId = params.get('requestId')
+        const sessionTopic = params.get('sessionTopic')
+        // @ts-expect-error window.aleo may be undefined
+        window.aleo.connectPuzzle({
+          wc: {
+            uri: wcUri,
+            requestId: requestId ?? undefined,
+            sessionTopic: sessionTopic ?? undefined
+          }
+        })
+      } else {
+        CoreUtil.openHref(href, '_self')
+      }
     }
   }
 

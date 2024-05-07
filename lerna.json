@@ -7,8 +7,7 @@
     "projects/modal-auth-html",
     "projects/modal-auth-react",
     "projects/modal-sign-html",
-    "projects/modal-sign-react",
-    "laboratory"
+    "projects/modal-sign-react"
   ],
   "version": "2.6.2",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"

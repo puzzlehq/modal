@@ -1,4 +1,4 @@
-import type { WalletConnectModalSignDisconnectArguments } from '@walletconnect/modal-sign-html'
+import type { WalletConnectModalSignDisconnectArguments } from '@puzzlehq/walletconnect-modal-sign-html'
 import { emitter, getWalletConnectModalSignClient } from '../client'
 import { useAsyncAction } from './_useAsyncAction'
 

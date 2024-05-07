@@ -1,4 +1,4 @@
-import type { WalletData } from '@walletconnect/modal-core'
+import type { WalletData } from '@puzzlehq/walletconnect-modal-core'
 import {
   ConfigCtrl,
   CoreUtil,
@@ -6,7 +6,7 @@ import {
   OptionsCtrl,
   RouterCtrl,
   ToastCtrl
-} from '@walletconnect/modal-core'
+} from '@puzzlehq/walletconnect-modal-core'
 import type { LitElement } from 'lit'
 
 export const UiUtil = {

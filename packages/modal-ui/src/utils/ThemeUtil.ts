@@ -1,4 +1,4 @@
-import { ThemeCtrl } from '@walletconnect/modal-core'
+import { ThemeCtrl } from '@puzzlehq/walletconnect-modal-core'
 import { css } from 'lit'
 
 function themeModeVariables() {

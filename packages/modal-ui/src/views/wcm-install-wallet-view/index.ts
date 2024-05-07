@@ -1,4 +1,4 @@
-import { CoreUtil } from '@walletconnect/modal-core'
+import { CoreUtil } from '@puzzlehq/walletconnect-modal-core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'

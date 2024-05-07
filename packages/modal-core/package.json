@@ -1,5 +1,5 @@
 {
-  "name": "@walletconnect/modal-core",
+  "name": "@puzzlehq/walletconnect-modal-core",
   "version": "2.6.2",
   "main": "dist/index.js",
   "type": "module",

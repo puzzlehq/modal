@@ -1,5 +1,5 @@
-import type { WalletConnectModalSignOptions } from '@walletconnect/modal-sign-html'
-import { WalletConnectModalSign } from '@walletconnect/modal-sign-html'
+import type { WalletConnectModalSignOptions } from '@puzzlehq/walletconnect-modal-sign-html'
+import { WalletConnectModalSign } from '@puzzlehq/walletconnect-modal-sign-html'
 import mitt from 'mitt'
 
 export const emitter = mitt()

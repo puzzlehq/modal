@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import type { WalletConnectModalConfig } from '@walletconnect/modal'
-import { WalletConnectModal } from '@walletconnect/modal'
+import type { WalletConnectModalConfig } from '@puzzlehq/walletconnect-modal'
+import { WalletConnectModal } from '@puzzlehq/walletconnect-modal'
 import SignClient from '@walletconnect/sign-client'
 
 // -- Types ----------------------------------------------------------------
@@ -39,48 +39,87 @@ export class WalletConnectModalSign {
   }
 
   // -- public ------------------------------------------------------------
-  public async connect(args: WalletConnectModalSignConnectArguments) {
+  public async connect(args: WalletConnectModalSignConnectArguments, showModal = true) {
     const { requiredNamespaces, optionalNamespaces } = args
 
     return new Promise<WalletConnectModalSignSession>(async (resolve, reject) => {
       await this.#initSignClient()
 
-      const unsubscribeModal = this.#modal.subscribeModal(state => {
-        if (!state.open) {
+      if (showModal) {
+        const unsubscribeModal = this.#modal.subscribeModal(state => {
+          if (!state.open) {
+            unsubscribeModal()
+            reject(new Error('Modal closed'))
+          }
+        })
+
+        const { uri, approval } = await this.#signClient!.connect(args)
+
+        if (uri) {
+          const namespaceChains = new Set<string>()
+          if (requiredNamespaces) {
+            Object.values(requiredNamespaces).forEach(({ chains }) => {
+              if (chains) {
+                chains.forEach(chain => namespaceChains.add(chain))
+              }
+            })
+          }
+          if (optionalNamespaces) {
+            Object.values(optionalNamespaces).forEach(({ chains }) => {
+              if (chains) {
+                chains.forEach(chain => namespaceChains.add(chain))
+              }
+            })
+          }
+          await this.#modal.openModal({ uri, chains: Array.from(namespaceChains) })
+        }
+
+        try {
+          const session = await approval()
+          resolve(session)
+        } catch (err) {
+          reject(err)
+        } finally {
           unsubscribeModal()
-          reject(new Error('Modal closed'))
+          this.#modal.closeModal()
         }
-      })
-
-      const { uri, approval } = await this.#signClient!.connect(args)
-
-      if (uri) {
-        const namespaceChains = new Set<string>()
-        if (requiredNamespaces) {
-          Object.values(requiredNamespaces).forEach(({ chains }) => {
-            if (chains) {
-              chains.forEach(chain => namespaceChains.add(chain))
+      } else {
+        const { uri, approval } = await this.#signClient!.connect(args)
+        if (uri) {
+          const namespaceChains = new Set<string>()
+          if (requiredNamespaces) {
+            Object.values(requiredNamespaces).forEach(({ chains }) => {
+              if (chains) {
+                chains.forEach(chain => namespaceChains.add(chain))
+              }
+            })
+          }
+          if (optionalNamespaces) {
+            Object.values(optionalNamespaces).forEach(({ chains }) => {
+              if (chains) {
+                chains.forEach(chain => namespaceChains.add(chain))
+              }
+            })
+          }
+          try {
+            // @ts-expect-error window.aleo may be undefined
+            if (window?.aleo?.connectPuzzle) {
+              // @ts-expect-error window.aleo may be undefined
+              window?.aleo?.connectPuzzle({
+                wc: {
+                  uri
+                }
+              })
+              const session = await approval()
+              resolve(session)
+            } else {
+              throw new Error('window.aleo.connectPuzzle is undefined! Set showModal to true.')
             }
-          })
+          } catch (e) {
+            console.error(e)
+            reject(e)
+          }
         }
-        if (optionalNamespaces) {
-          Object.values(optionalNamespaces).forEach(({ chains }) => {
-            if (chains) {
-              chains.forEach(chain => namespaceChains.add(chain))
-            }
-          })
-        }
-        await this.#modal.openModal({ uri, chains: Array.from(namespaceChains) })
-      }
-
-      try {
-        const session = await approval()
-        resolve(session)
-      } catch (err) {
-        reject(err)
-      } finally {
-        unsubscribeModal()
-        this.#modal.closeModal()
       }
     })
   }

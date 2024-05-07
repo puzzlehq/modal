@@ -1,4 +1,9 @@
-import { ConfigCtrl, ExplorerCtrl, OptionsCtrl, ToastCtrl } from '@walletconnect/modal-core'
+import {
+  ConfigCtrl,
+  ExplorerCtrl,
+  OptionsCtrl,
+  ToastCtrl
+} from '@puzzlehq/walletconnect-modal-core'
 import { LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { UiUtil } from '../utils/UiUtil'

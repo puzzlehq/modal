@@ -1,4 +1,4 @@
-import type { WalletConnectModalSignOptions } from '@walletconnect/modal-sign-html'
+import type { WalletConnectModalSignOptions } from '@puzzlehq/walletconnect-modal-sign-html'
 import { memo, useEffect } from 'react'
 import { setWalletConnectModalSignClient } from '../client'
 

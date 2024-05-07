@@ -2,8 +2,8 @@
 
 import type { AuthClientTypes } from '@walletconnect/auth-client'
 import { AuthClient, generateNonce } from '@walletconnect/auth-client'
-import type { WalletConnectModalConfig } from '@walletconnect/modal'
-import { WalletConnectModal } from '@walletconnect/modal'
+import type { WalletConnectModalConfig } from '@puzzlehq/walletconnect-modal'
+import { WalletConnectModal } from '@puzzlehq/walletconnect-modal'
 
 // -- Types ----------------------------------------------------------------
 export interface WalletConnectModalAuthOptions {

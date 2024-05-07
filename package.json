@@ -1,12 +1,11 @@
 {
-  "name": "walletconnect-modal",
+  "name": "puzzle-walletconnect-modal",
   "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "npm run build --ws --if-present",
     "dev": "npm run dev --ws --if-present",
-    "lab": "npm run dev --w=laboratory",
     "lint": "eslint .",
     "prettier": "prettier --check .",
     "typecheck": "npm run typecheck --ws --if-present",
@@ -23,8 +22,7 @@
     "projects/modal-auth-html",
     "projects/modal-auth-react",
     "projects/modal-sign-html",
-    "projects/modal-sign-react",
-    "laboratory"
+    "projects/modal-sign-react"
   ],
   "devDependencies": {
     "@types/node": "20.6.0",
