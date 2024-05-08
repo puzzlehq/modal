@@ -3,6 +3,7 @@
   "include": ["index.ts", "src", "src/types", "../../global.d.ts"],
   "compilerOptions": {
     "outDir": "./dist/_types",
-    "declaration": true
+    "declaration": true,
+    "declarationMap": true
   }
 }
