@@ -99,14 +99,17 @@ export const UiUtil = {
     }
   },
 
-  handleAndroidLinking() {
-    const { walletConnectUri } = OptionsCtrl.state
-
-    if (walletConnectUri) {
-      CoreUtil.setWalletConnectAndroidDeepLink(walletConnectUri)
-      CoreUtil.openHref(walletConnectUri, '_self')
-    }
-  },
+  /*
+   * We're using a different way to connect to Android
+   * handleAndroidLinking() {
+   *  const { walletConnectUri } = OptionsCtrl.state
+   *
+   * if (walletConnectUri) {
+   *    CoreUtil.setWalletConnectAndroidDeepLink(walletConnectUri)
+   *    CoreUtil.openHref(walletConnectUri, '_self')
+   *  }
+   * },
+   */
 
   async handleUriCopy() {
     const { walletConnectUri } = OptionsCtrl.state

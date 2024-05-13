@@ -1,6 +1,6 @@
 {
   "name": "@puzzlehq/walletconnect-modal-auth-react",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -17,7 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@puzzlehq/walletconnect-modal-auth-html": "../modal-auth-html"
+    "@puzzlehq/walletconnect-modal-auth-html": "0.0.6"
   },
   "peerDependencies": {
     "react": ">=17",

@@ -1,6 +1,6 @@
 {
   "name": "@puzzlehq/walletconnect-modal-sign-react",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -17,7 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@puzzlehq/walletconnect-modal-sign-html": "../modal-sign-html",
+    "@puzzlehq/walletconnect-modal-sign-html": "0.0.6",
     "mitt": "3.0.1"
   },
   "peerDependencies": {

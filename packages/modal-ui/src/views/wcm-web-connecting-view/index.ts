@@ -30,9 +30,7 @@ export class WcmWebConnectingView extends LitElement {
       if (
         name === 'Puzzle Wallet' &&
         // @ts-expect-error window.aleo may be undefined
-        window?.aleo?.connectPuzzle &&
-        // @ts-expect-error window.aleo may be undefined
-        window?.aleo?.puzzleWalletClient
+        window?.aleo?.connectPuzzle
       ) {
         const url = new URL(href)
         const params = url.searchParams

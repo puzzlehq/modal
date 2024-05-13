@@ -1,6 +1,6 @@
 {
   "name": "@puzzlehq/walletconnect-modal-sign-html",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@puzzlehq/walletconnect-modal": "../modal",
+    "@puzzlehq/walletconnect-modal": "0.0.6",
     "@walletconnect/sign-client": "2.12.2"
   },
   "keywords": [

@@ -10,6 +10,16 @@ import styles from './styles.css'
 export class WcmAndroidWalletSelection extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
+  private onConnect(wallet: unknown) {
+    if (CoreUtil.isAndroid()) {
+      // @ts-expect-error type is WalletData, but should not be imported here
+      UiUtil.handleMobileLinking(wallet)
+    } else {
+      // @ts-expect-error type is WalletData, but should not be imported here
+      UiUtil.goToConnectingView(wallet)
+    }
+  }
+
   // -- private ------------------------------------------------------ //
   private onGoToQrcode() {
     RouterCtrl.push('Qrcode')
@@ -47,7 +57,7 @@ export class WcmAndroidWalletSelection extends LitElement {
                 : SvgUtil.WALLET_PLACEHOLDER
             })}
           </div>
-          <wcm-button-big @click=${UiUtil.handleAndroidLinking}>
+          <wcm-button-big @click=${() => this.onConnect(recomendedWallets[0])}>
             <wcm-text variant="medium-regular" color="inverse">Select Wallet</wcm-text>
           </wcm-button-big>
         </div>
