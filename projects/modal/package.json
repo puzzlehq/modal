@@ -1,6 +1,6 @@
 {
   "name": "@puzzlehq/walletconnect-modal",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
@@ -18,8 +18,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@puzzlehq/walletconnect-modal-core": "0.0.6",
-    "@puzzlehq/walletconnect-modal-ui": "0.0.6"
+    "@puzzlehq/walletconnect-modal-core": "0.0.9",
+    "@puzzlehq/walletconnect-modal-ui": "0.0.9"
   },
   "keywords": [
     "web3",

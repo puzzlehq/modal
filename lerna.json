@@ -9,6 +9,6 @@
     "projects/modal-sign-html",
     "projects/modal-sign-react"
   ],
-  "version": "0.0.6",
+  "version": "0.0.9",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
